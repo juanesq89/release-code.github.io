@@ -9,48 +9,33 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #ffffff;
-      --bg2: #f5f5f3;
-      --text: #1a1a1a;
-      --text2: #6b6b6b;
-      --text3: #aaaaaa;
-      --border: rgba(0,0,0,0.1);
-      --border2: rgba(0,0,0,0.2);
-      --radius-md: 8px;
-      --radius-lg: 12px;
+      --bg: #ffffff; --bg2: #f5f5f3;
+      --text: #1a1a1a; --text2: #6b6b6b; --text3: #aaaaaa;
+      --border: rgba(0,0,0,0.1); --border2: rgba(0,0,0,0.2);
+      --radius-md: 8px; --radius-lg: 12px;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #111111;
-        --bg2: #1e1e1e;
-        --text: #f0f0f0;
-        --text2: #999999;
-        --text3: #555555;
-        --border: rgba(255,255,255,0.1);
-        --border2: rgba(255,255,255,0.2);
+        --bg: #111111; --bg2: #1e1e1e;
+        --text: #f0f0f0; --text2: #999999; --text3: #555555;
+        --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.2);
       }
     }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-
-    /* NAV */
     nav {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 40px;
-      border-bottom: 0.5px solid var(--border);
+      padding: 20px 40px; border-bottom: 0.5px solid var(--border);
       position: sticky; top: 0; background: var(--bg); z-index: 100;
     }
-    .nav-logo { font-size: 18px; font-weight: 500; }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a {
-      font-size: 14px; color: var(--text2); text-decoration: none; cursor: pointer;
+    .nav-logo {
+      font-size: 18px; font-weight: 500; cursor: pointer;
+      text-decoration: none; color: var(--text);
     }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; color: var(--text2); text-decoration: none; cursor: pointer; }
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
-
-    /* PAGES */
     .page { display: none; }
     .page.active { display: block; }
-
-    /* HOME */
     .hero {
       padding: 80px 40px 60px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
@@ -59,32 +44,20 @@
     .hero-left h1 { font-size: 38px; font-weight: 500; line-height: 1.2; margin-bottom: 16px; }
     .hero-left p { font-size: 15px; color: var(--text2); line-height: 1.7; margin-bottom: 28px; }
     .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .tag {
-      font-size: 12px; padding: 4px 12px;
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius-md); color: var(--text2);
-    }
+    .tag { font-size: 12px; padding: 4px 12px; border: 0.5px solid var(--border); border-radius: var(--radius-md); color: var(--text2); }
     .contact-btn {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 14px; padding: 10px 20px;
-      border: 0.5px solid var(--border2);
-      border-radius: var(--radius-md);
+      border: 0.5px solid var(--border2); border-radius: var(--radius-md);
       color: var(--text); text-decoration: none; cursor: pointer;
       background: transparent; transition: background 0.2s; font-family: inherit;
     }
     .contact-btn:hover { background: var(--bg2); }
-    .hero-photo {
-      width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top;
-      border-radius: var(--radius-lg);
-    }
+    .hero-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; border-radius: var(--radius-lg); }
     .section-divider { height: 0.5px; background: var(--border); margin: 0 40px; }
     .career-section { padding: 60px 40px; max-width: 960px; margin: 0 auto; }
     .career-section h2 { font-size: 18px; font-weight: 500; margin-bottom: 28px; }
-    .career-item {
-      display: grid; grid-template-columns: 80px 1fr;
-      gap: 20px; padding: 16px 0;
-      border-bottom: 0.5px solid var(--border);
-    }
+    .career-item { display: grid; grid-template-columns: 80px 1fr; gap: 20px; padding: 16px 0; border-bottom: 0.5px solid var(--border); }
     .career-item:last-child { border-bottom: none; }
     .career-era { font-size: 12px; color: var(--text3); padding-top: 2px; }
     .career-desc { font-size: 15px; }
@@ -92,12 +65,7 @@
     .lang-section { padding: 0 40px 60px; max-width: 960px; margin: 0 auto; }
     .lang-section h2 { font-size: 18px; font-weight: 500; margin-bottom: 20px; }
     .lang-pills { display: flex; gap: 10px; flex-wrap: wrap; }
-    .lang-pill {
-      font-size: 13px; padding: 6px 16px;
-      background: var(--bg2); border-radius: 999px; color: var(--text2);
-    }
-
-    /* WORKS */
+    .lang-pill { font-size: 13px; padding: 6px 16px; background: var(--bg2); border-radius: 999px; color: var(--text2); }
     .works-grid {
       padding: 60px 40px; max-width: 960px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;
@@ -109,20 +77,13 @@
     }
     .work-card:hover { border-color: var(--border2); }
     .work-header { padding: 28px 28px 20px; flex: 1; }
-    .work-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 16px;
-    }
+    .work-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
     .work-icon.pv { background: #0d0f14; }
     .work-icon.rn { background: #ff4040; }
     .work-name { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
     .work-title { font-size: 13px; color: var(--text3); margin-bottom: 10px; }
     .work-sub { font-size: 13px; color: var(--text2); line-height: 1.6; }
-    .work-footer {
-      padding: 16px 28px; border-top: 0.5px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
-    }
+    .work-footer { padding: 16px 28px; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
     .status { font-size: 12px; padding: 3px 10px; border-radius: 999px; }
     .status.live { background: #dcfce7; color: #166534; }
     .status.soon { background: #fef9c3; color: #854d0e; }
@@ -130,16 +91,8 @@
       .status.live { background: #14532d; color: #86efac; }
       .status.soon { background: #422006; color: #fde047; }
     }
-
-    /* DETAIL */
-    .detail-hero {
-      padding: 60px 40px 40px; max-width: 960px; margin: 0 auto;
-      display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: flex-start;
-    }
-    .detail-icon {
-      width: 80px; height: 80px; border-radius: 20px;
-      display: flex; align-items: center; justify-content: center; font-size: 36px;
-    }
+    .detail-hero { padding: 60px 40px 40px; max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: flex-start; }
+    .detail-icon { width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
     .detail-icon.pv { background: #0d0f14; }
     .detail-icon.rn { background: #ff4040; }
     .detail-meta h1 { font-size: 30px; font-weight: 500; margin-bottom: 6px; }
@@ -151,31 +104,14 @@
     .feature-icon { font-size: 20px; margin-bottom: 10px; }
     .feature-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
     .feature-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
-    .cta-bar {
-      border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
+    .cta-bar { border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; display: flex; justify-content: space-between; align-items: center; }
     .cta-bar p { font-size: 15px; color: var(--text2); }
-    .cta-link {
-      font-size: 14px; padding: 10px 20px;
-      background: var(--text); color: var(--bg);
-      border-radius: var(--radius-md); text-decoration: none; cursor: pointer;
-      border: none; font-family: inherit;
-    }
-    .coming-soon-box {
-      text-align: center; padding: 80px 40px;
-      border: 0.5px dashed var(--border2);
-      border-radius: var(--radius-lg); margin-bottom: 40px;
-    }
+    .cta-link { font-size: 14px; padding: 10px 20px; background: var(--text); color: var(--bg); border-radius: var(--radius-md); text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
+    .coming-soon-box { text-align: center; padding: 80px 40px; border: 0.5px dashed var(--border2); border-radius: var(--radius-lg); margin-bottom: 40px; }
     .coming-soon-box h2 { font-size: 22px; font-weight: 500; margin-bottom: 10px; }
     .coming-soon-box p { font-size: 15px; color: var(--text2); }
-    .back-btn {
-      font-size: 14px; color: var(--text2); cursor: pointer;
-      padding: 20px 40px 0; display: inline-flex; align-items: center; gap: 6px;
-      background: none; border: none; font-family: inherit;
-    }
+    .back-btn { font-size: 14px; color: var(--text2); cursor: pointer; padding: 20px 40px 0; display: inline-flex; align-items: center; gap: 6px; background: none; border: none; font-family: inherit; }
     .back-btn:hover { color: var(--text); }
-
     @media (max-width: 640px) {
       nav { padding: 16px 20px; }
       .hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px; }
@@ -192,7 +128,7 @@
 </head>
 <body>
   <nav>
-    <span class="nav-logo">Release Code</span>
+    <a class="nav-logo" onclick="showPage('home')">Release Code</a>
     <div class="nav-links">
       <a onclick="showPage('home')" id="nav-home" class="active">About</a>
       <a onclick="showPage('works')" id="nav-works">Works</a>
@@ -219,15 +155,15 @@
       <h2>Career</h2>
       <div class="career-item">
         <span class="career-era">前</span>
-        <div class="career-desc">XX중공업 선박영업 근무<span>Shipbuilding sales</span></div>
+        <div class="career-desc">ㅇㅇ중공업 선박영업 근무<span>Shipbuilding sales</span></div>
       </div>
       <div class="career-item">
         <span class="career-era">前</span>
-        <div class="career-desc">XXXXXXXX 중남미사업섹션 근무<span>Latin America business division</span></div>
+        <div class="career-desc">ㅇㅇㅇㅇㅇㅇㅇㅇ 중남미사업섹션 근무<span>Latin America business division</span></div>
       </div>
       <div class="career-item">
         <span class="career-era">現</span>
-        <div class="career-desc">법무법인 XXX 소속변호사<span>Attorney at law</span></div>
+        <div class="career-desc">법무법인 ㅇㅇㅇ 소속변호사<span>Attorney at law</span></div>
       </div>
       <div class="career-item">
         <span class="career-era">現</span>
@@ -252,8 +188,8 @@
         <div class="work-header">
           <div class="work-icon pv">⚖️</div>
           <div class="work-name">PreVerdict</div>
-          <div class="work-title">형사사건 AI 형량예측 프로그램</div>
-          <div class="work-sub">사건 정보를 입력하면 유사 판례를 분석해 예상 형량과 법적 전략을 제시합니다. 변호사를 위한 실무 도구.</div>
+          <div class="work-title">형량 예측 · 형사 커뮤니티</div>
+          <div class="work-sub">사건 정보를 입력하면 AI가 유사 판례를 분석해 예상 형량을 제시합니다. 형사사건 당사자와 법조인을 위한 커뮤니티 플랫폼.</div>
         </div>
         <div class="work-footer">
           <span class="status live">Live</span>
@@ -282,11 +218,12 @@
       <div class="detail-icon pv">⚖️</div>
       <div class="detail-meta">
         <h1>PreVerdict</h1>
-        <p>변호사가 사용하는 AI 형량예측 프로그램. 사건 유형과 정황을 입력하면 유사 판례를 분석해 예상 형량 범위와 핵심 법적 쟁점을 즉시 제시합니다.</p>
+        <p>형사사건 AI 형량예측 + 커뮤니티 플랫폼. 피고인, 피해자, 법조인 누구든 사건 정보를 입력하면 유사 판례 기반으로 예상 형량을 확인하고, 같은 처지의 사람들과 소통할 수 있습니다.</p>
         <div class="detail-badges">
           <span class="tag">Legal-tech</span>
           <span class="tag">AI</span>
           <span class="tag">형사법</span>
+          <span class="tag">커뮤니티</span>
           <span class="status live">Live on Play Store</span>
         </div>
       </div>
@@ -296,12 +233,12 @@
         <div class="feature-card">
           <div class="feature-icon">🔍</div>
           <div class="feature-title">AI 형량 예측</div>
-          <div class="feature-desc">사건 정보를 입력하면 실제 판례를 분석해 예상 형량 범위를 제시합니다.</div>
+          <div class="feature-desc">사건 유형과 정황을 입력하면 실제 판례를 분석해 예상 형량 범위를 제시합니다.</div>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">📋</div>
-          <div class="feature-title">판례 분석</div>
-          <div class="feature-desc">유사 사건 판례를 자동 검색하고 핵심 양형 요소를 정리해 보여줍니다.</div>
+          <div class="feature-icon">💬</div>
+          <div class="feature-title">형사 커뮤니티</div>
+          <div class="feature-desc">비슷한 사건을 겪은 사람들과 익명으로 경험을 나누고 정보를 공유할 수 있습니다.</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⏱️</div>
