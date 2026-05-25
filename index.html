@@ -23,128 +23,77 @@
     }
     body { font-family: 'Inter', sans-serif; background: #000; color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-    /* ── SPLASH ── */
+    /* SPLASH */
     #splash {
-      position: fixed; inset: 0; z-index: 9999;
+      width: 100%; min-height: 100vh;
       background: #000;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      cursor: pointer;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; cursor: pointer;
     }
-    #splash.fade-out {
-      animation: splashFadeOut 1.2s ease forwards;
-    }
-    @keyframes splashFadeOut {
-      0% { opacity: 1; }
-      100% { opacity: 0; pointer-events: none; }
-    }
+    #splash.out { animation: fadeOut 1.1s ease forwards; }
+    @keyframes fadeOut { to { opacity: 0; } }
 
-    .splash-bg {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 60%, #0a0a0a 0%, #000 70%);
-    }
-    .splash-noise {
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.3; pointer-events: none;
-    }
-
-    .splash-content {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column; align-items: center;
-      gap: 0;
-    }
-
-    .splash-line {
+    .s-line {
       width: 1px; height: 0;
-      background: linear-gradient(to bottom, transparent, #ffffff44, transparent);
+      background: #ffffff33;
       margin-bottom: 48px;
-      animation: lineGrow 1s ease 0.3s forwards;
+      animation: lineGrow 0.9s ease 0.3s forwards;
     }
-    @keyframes lineGrow {
-      to { height: 80px; }
-    }
+    @keyframes lineGrow { to { height: 72px; } }
 
-    .splash-tag {
+    .s-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; font-weight: 300;
-      letter-spacing: 0.25em;
-      color: #444;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.8s forwards;
-      margin-bottom: 24px;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.25em;
+      color: #444; text-transform: uppercase;
+      opacity: 0; margin-bottom: 20px;
+      animation: fadeUp 0.7s ease 0.9s forwards;
     }
-
-    .splash-title {
+    .s-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(52px, 8vw, 88px);
-      font-weight: 300;
-      color: #fff;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      opacity: 0;
-      animation: fadeUp 1s ease 1.1s forwards;
-      text-align: center;
+      font-size: clamp(52px, 9vw, 88px);
+      font-weight: 300; color: #fff;
+      letter-spacing: -0.03em; line-height: 1;
+      opacity: 0; text-align: center;
+      animation: fadeUp 1s ease 1.2s forwards;
     }
-    .splash-title span {
-      font-weight: 500;
-      background: linear-gradient(135deg, #fff 0%, #888 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .splash-sub {
+    .s-title b { font-weight: 500; }
+    .s-sub {
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px; font-weight: 300;
-      color: #555;
-      letter-spacing: 0.05em;
-      margin-top: 28px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 1.8s forwards;
+      color: #444; letter-spacing: 0.04em;
+      margin-top: 28px; opacity: 0;
+      animation: fadeUp 0.8s ease 2s forwards;
     }
-    .splash-sub .cursor {
-      display: inline-block;
-      width: 8px; height: 14px;
-      background: #555;
-      margin-left: 2px;
-      vertical-align: middle;
-      animation: blink 1s step-end infinite;
+    .s-cursor {
+      display: inline-block; width: 7px; height: 13px;
+      background: #444; margin-left: 2px; vertical-align: middle;
+      animation: blink 1s step-end 2.1s infinite;
     }
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .splash-enter {
-      position: absolute;
-      bottom: 48px;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: #333;
-      text-transform: uppercase;
+    @keyframes blink { 50% { opacity: 0; } }
+    .s-enter {
+      position: absolute; bottom: 40px;
       font-family: 'JetBrains Mono', monospace;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 2.8s forwards;
+      font-size: 11px; letter-spacing: 0.2em;
+      color: #333; text-transform: uppercase;
+      opacity: 0; text-align: center;
+      animation: fadeUp 0.7s ease 3.2s forwards;
     }
-    .splash-enter::after {
-      content: '';
-      display: block;
-      width: 1px; height: 24px;
+    .s-enter-bar {
+      width: 1px; height: 20px;
       background: linear-gradient(to bottom, #333, transparent);
-      margin: 12px auto 0;
-      animation: pulse 2s ease-in-out 3s infinite;
+      margin: 10px auto 0;
+      animation: pulse 2s ease-in-out 3.4s infinite;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; } 50% { opacity: 1; }
-    }
-
+    @keyframes pulse { 0%,100%{opacity:0.2} 50%{opacity:1} }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(14px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── MAIN SITE ── */
+    /* MAIN */
     #main {
+      display: none;
       opacity: 0;
       background: var(--bg);
       min-height: 100vh;
@@ -163,6 +112,7 @@
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
     .page { display: none; }
     .page.active { display: block; }
+
     .hero {
       padding: 80px 40px 60px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
@@ -181,6 +131,7 @@
     }
     .contact-btn:hover { background: var(--bg2); }
     .hero-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; border-radius: var(--radius-lg); }
+
     .section-divider { height: 0.5px; background: var(--border); margin: 0 40px; }
     .career-section { padding: 60px 40px; max-width: 960px; margin: 0 auto; }
     .career-section h2 { font-size: 18px; font-weight: 500; margin-bottom: 28px; }
@@ -193,6 +144,7 @@
     .lang-section h2 { font-size: 18px; font-weight: 500; margin-bottom: 20px; }
     .lang-pills { display: flex; gap: 10px; flex-wrap: wrap; }
     .lang-pill { font-size: 13px; padding: 6px 16px; background: var(--bg2); border-radius: 999px; color: var(--text2); }
+
     .works-grid {
       padding: 60px 40px; max-width: 960px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;
@@ -214,6 +166,7 @@
       .status.live { background: #14532d; color: #86efac; }
       .status.soon { background: #422006; color: #fde047; }
     }
+
     .detail-hero { padding: 60px 40px 40px; max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: flex-start; }
     .detail-icon { width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
     .detail-icon.pv { background: #0d0f14; }
@@ -235,6 +188,7 @@
     .coming-soon-box p { font-size: 15px; color: var(--text2); }
     .back-btn { font-size: 14px; color: var(--text2); cursor: pointer; padding: 20px 40px 0; display: inline-flex; align-items: center; gap: 6px; background: none; border: none; font-family: inherit; }
     .back-btn:hover { color: var(--text); }
+
     @media (max-width: 640px) {
       nav { padding: 16px 20px; }
       .hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px; }
@@ -246,7 +200,6 @@
       .cta-bar { flex-direction: column; gap: 16px; text-align: center; }
       .detail-hero { padding: 40px 20px 24px; }
       .back-btn { padding: 20px 20px 0; }
-      .splash-title { font-size: 42px; }
     }
   </style>
 </head>
@@ -254,15 +207,13 @@
 
   <!-- SPLASH -->
   <div id="splash" onclick="enterSite()">
-    <div class="splash-bg"></div>
-    <div class="splash-noise"></div>
-    <div class="splash-content">
-      <div class="splash-line"></div>
-      <div class="splash-tag">est. 2024</div>
-      <div class="splash-title"><span>Release</span> Code</div>
-      <div class="splash-sub">// releasing code to the world<span class="cursor"></span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;">
+      <div class="s-line"></div>
+      <div class="s-tag">est. 2026</div>
+      <div class="s-title"><b>Release</b> Code</div>
+      <div class="s-sub">// releasing code to the world<span class="s-cursor"></span></div>
     </div>
-    <div class="splash-enter">enter</div>
+    <div class="s-enter">enter<div class="s-enter-bar"></div></div>
   </div>
 
   <!-- MAIN -->
@@ -275,7 +226,6 @@
       </div>
     </nav>
 
-    <!-- HOME -->
     <div class="page active" id="page-home">
       <div class="hero">
         <div class="hero-left">
@@ -321,7 +271,6 @@
       </div>
     </div>
 
-    <!-- WORKS -->
     <div class="page" id="page-works">
       <div class="works-grid">
         <div class="work-card" onclick="showPage('preverdict')">
@@ -332,8 +281,7 @@
             <div class="work-sub">사건 정보를 입력하면 AI가 유사 판례를 분석해 예상 형량을 제시합니다. 형사사건 당사자와 법조인을 위한 커뮤니티 플랫폼.</div>
           </div>
           <div class="work-footer">
-            <span class="status live">Live</span>
-            <span>→</span>
+            <span class="status live">Live</span><span>→</span>
           </div>
         </div>
         <div class="work-card" onclick="showPage('rightnow')">
@@ -344,14 +292,12 @@
             <div class="work-sub">억울한 노동자가 혼자서도 권리를 찾을 수 있도록 돕는 AI 기반 서비스.</div>
           </div>
           <div class="work-footer">
-            <span class="status soon">Coming soon</span>
-            <span>→</span>
+            <span class="status soon">Coming soon</span><span>→</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- PREVERDICT -->
     <div class="page" id="page-preverdict">
       <button class="back-btn" onclick="showPage('works')">← Works</button>
       <div class="detail-hero">
@@ -393,7 +339,6 @@
       </div>
     </div>
 
-    <!-- RIGHTNOW -->
     <div class="page" id="page-rightnow">
       <button class="back-btn" onclick="showPage('works')">← Works</button>
       <div class="detail-hero">
@@ -423,18 +368,18 @@
   </div>
 
   <script>
-    // 3초 후 자동 진입
-    const autoTimer = setTimeout(() => enterSite(), 4500);
+    const autoTimer = setTimeout(enterSite, 5000);
 
     function enterSite() {
       clearTimeout(autoTimer);
       const splash = document.getElementById('splash');
       const main = document.getElementById('main');
-      splash.classList.add('fade-out');
+      splash.classList.add('out');
+      main.style.display = 'block';
       setTimeout(() => {
         splash.style.display = 'none';
         main.classList.add('visible');
-      }, 1200);
+      }, 1100);
     }
 
     function showPage(name) {
